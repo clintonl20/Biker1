@@ -1,0 +1,77 @@
+#CODE
+import java.io.*;
+import java.util.*;
+public class Biker {
+ public static void main(String[] args) throws IOException
+ {
+ // TODO Auto-generated method stub
+ Scanner sc=new Scanner(System.in);
+ //Display project name and Developer name.
+ System.out.println("Project Name= Virtual Key for Your Repositories");
+ System.out.println("Developer Name= Clinton Lima");
+ // OutPut user choice
+ System.out.println("Enter your Choice");
+ System.out.println("choice 1: create new file");
+ System.out.println("choice 2: Write in file");
+ System.out.println("choice 3: Read the file");
+ System.out.println("choice 4: Delete file");
+ System.out.println("choice 0: Exit");
+ 
+ int choice=sc.nextInt();
+ // provide fie location and create its object f1.
+ File f1=new File("D:\\Personal Data\\CLINTON\\full Stack JAVA DEVLOPER\\Working_Data\\Biker\\bike.txt");
+ 
+ //Switch statement behalf of user choice.
+ switch(choice)
+ {
+ case 1:
+ //create file 
+ f1.createNewFile();
+ System.out.println("file create sucessfully="+f1.getName());
+ break;
+ case 2:
+ // write some data which user type and create object fw for filewriter.
+ FileWriter fw=new FileWriter(f1.getPath());
+ System.out.println("Please type which you enter in file");
+ // create sct object for user input data.
+ Scanner sct=new Scanner(System.in);
+ //store user input into t variable 
+ String t=sct.nextLine();
+ fw.write(t);
+ //close file.
+ fw.close();
+ System.out.println("write sucessfully");
+ break;
+case 3:
+ //create object fr for file and give give addresh or use f1.getPath
+ File fr=new File(f1.getPath());
+ Scanner scr= new Scanner(fr);
+//check file data and print it with the help of while.
+ while(scr.hasNextLine())
+ {
+ String line=scr.nextLine();
+ System.out.println(line);
+ }
+ //after read data from file close it.
+ scr.close();
+ // display file char length which u written before read file or current .
+ System.out.println("file length "+f1.length());
+ break;
+ 
+ case 4:
+ //Delete file when we want and create its obj d. 
+ String d=f1.getName();
+ //delete file.
+ f1.delete();
+ System.out.println("Delete this file sucessfully="+d);
+ System.out.println("can write = "+f1.getPath());
+ 
+ 
+ break;
+ case 0:
+ break;
+ default :
+ System.out.println("select write choice");
+ }
+ }
+}
